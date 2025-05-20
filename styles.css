@@ -1,0 +1,405 @@
+/* ----------------- ESTILOS GENERALES ----------------- */
+body {
+    margin: 0;
+    padding: 0;
+    background: #080f1a;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .container {
+    position: relative;
+    width: 600px;
+    height: 800px;
+    z-index: 2;
+  }
+  
+  .glass {
+    width: 100%;
+    height: 100%;
+    background: #122139;
+    border-radius: 300px 300px 0 0;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .glass::before {
+    content: "";
+    position: absolute;
+    top: -74px;
+    left: 256px;
+    width: 40px;
+    height: 40px;
+    border: 25px solid #122139;
+    border-radius: 50%;
+  }
+  
+  .glass::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: brown;
+  }
+  
+  .shine {
+    position: absolute;
+    top: 200px;
+    left: 85%;
+    width: 26px;
+    height: 330px;
+    background: white;
+    opacity: 0.2;
+    border-radius: 100px;
+    z-index: 10;
+  }
+  
+  .shine::before {
+    content: "";
+    position: absolute;
+    top: 365px;
+    width: 26px;
+    height: 40px;
+    background: white;
+    border-radius: 100px;
+  }
+  
+  .petal,
+  .petal::before,
+  .floating-love,
+  .petals div,
+  .deadPetals div,
+  .leaves div,
+  .thorns div {
+    position: absolute;
+  }
+  
+  .petals div {
+    width: 85px;
+    height: 120px;
+    background: #d52d58;
+    top: 200px;
+    transition: all 0.5s ease-out;
+  }
+  
+  .petals div:nth-child(1) {
+    left: 268px;
+    box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+  }
+  
+  .petals div:nth-child(2),
+  .petals div:nth-child(4),
+  .petals div:nth-child(6) {
+    background: #b81b43;
+    left: 230px;
+    border-radius: 0px 50px 0px 50px;
+    transform-origin: bottom right;
+  }
+  
+  .petals div:nth-child(3),
+  .petals div:nth-child(5),
+  .petals div:nth-child(7) {
+    background: #b81b43;
+    left: 300px;
+    border-radius: 50px 0px 50px 0px;
+    transform-origin: bottom left;
+  }
+  
+  .petals div:nth-child(2) {
+    z-index: 5;
+    top: 218px;
+    height: 130px;
+    background: #ab1a3f;
+    box-shadow: 0px 0px 60px rgba(245, 148, 184, 0.5);
+    animation: bloom2 3s ease-in-out forwards;
+  }
+  
+  .petals div:nth-child(3) {
+    z-index: 4;
+    top: 218px;
+    height: 130px;
+    background: #ab1a3f;
+    box-shadow: 0px 0px 60px rgba(245, 148, 184, 0.5);
+    animation: bloom3 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+  }
+  
+  .petals div:nth-child(4),
+  .petals div:nth-child(5),
+  .petals div:nth-child(6),
+  .petals div:nth-child(7) {
+    top: 213px;
+    height: 135px;
+    background: #b81b43;
+    box-shadow: 0px 0px 60px rgba(245, 148, 184, 0.5);
+  }
+  
+  .petals div:nth-child(4) { z-index: 3; animation: bloom4 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+  .petals div:nth-child(5) { z-index: 2; animation: bloom5 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+  .petals div:nth-child(6) { z-index: 1; animation: bloom6 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+  .petals div:nth-child(7) { z-index: 0; animation: bloom7 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+  
+  .leaves div:nth-child(1) {
+    width: 15px;
+    height: 390px;
+    background: #054c05;
+    top: 308px;
+    left: 300px;
+    border-radius: 0 0 100px 100px;
+  }
+  
+  .leaves div:nth-child(2),
+  .leaves div:nth-child(3) {
+    width: 60px;
+    height: 100px;
+    background: #054c05;
+    box-shadow: inset 10px 10px #066406;
+    top: 412px;
+    border-radius: 10px 80px 40px 80px;
+  }
+  
+  .leaves div:nth-child(2) {
+    left: 254px;
+    transform: rotate(-30deg);
+  }
+  
+  .leaves div:nth-child(3) {
+    left: 300px;
+    transform: rotate(30deg);
+  }
+  
+  .leaves div:nth-child(4) {
+    width: 55px;
+    height: 30px;
+    background: #338f37;
+    top: 334px;
+    left: 278px;
+    border-radius: 100px;
+  }
+  
+  .thorns div {
+    width: 0;
+    height: 0;
+  }
+  
+  .thorns div:nth-child(odd) {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #054c05;
+    left: 315px;
+  }
+  
+  .thorns div:nth-child(even) {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #054c05;
+    left: 285px;
+  }
+  
+  .thorns div:nth-child(1) { top: 465px; }
+  .thorns div:nth-child(2) { top: 390px; }
+  .thorns div:nth-child(3) { top: 500px; }
+  .thorns div:nth-child(4) { top: 525px; }
+  
+  .texto {
+    margin-top: 40px;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    font-family: sans-serif;
+    z-index: 2;
+  }
+  
+  .petal {
+    position: fixed;
+    width: 20px;
+    height: 15px;
+    background: #d52d58;
+    border-radius: 0 30px 0 30px;
+    opacity: 0.8;
+    box-shadow: 0px 0px 10px rgba(245, 148, 184, 0.6);
+    animation: fall linear infinite;
+    z-index: 0;
+  }
+  
+  .floating-love {
+    position: fixed;
+    color: #ff5e92;
+    font-family: cursive;
+    z-index: 3;
+    animation: floatAndFade ease-in-out forwards;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  /* ----------------- ANIMACIONES ----------------- */
+  @keyframes bloom2 {
+    50% {
+      transform: rotate(-90deg);
+      top: 400px;
+      left: 150px;
+    }
+    100% {
+      transform: rotate(-60deg);
+      top: 615px;
+      left: 100px;
+      background: #71122a;
+      box-shadow: none;
+    }
+  }
+  
+  @keyframes bloom3 {
+    100% { transform: rotate(50deg); }
+  }
+  @keyframes bloom4 {
+    100% { transform: rotate(-25deg); }
+  }
+  @keyframes bloom5 {
+    100% { transform: rotate(25deg); }
+  }
+  @keyframes bloom6 {
+    100% { transform: rotate(-10deg); }
+  }
+  @keyframes bloom7 {
+    100% { transform: rotate(10deg); }
+  }
+  
+  @keyframes glowing {
+    50% {
+      background: #d7365f;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+    }
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes floatAndFade {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-30px); opacity: 0; }
+  }
+  
+  /* ----------------- MEDIA QUERY PARA RESPONSIVE ----------------- */
+  @media (max-width: 480px) {
+    body {
+      padding: 8px;
+      height: auto;
+    }
+  
+    .texto {
+      font-size: 1.1rem;
+      margin-top: 12px;
+      padding: 0 3px;
+    }
+  
+    .container {
+      max-width: 350px;
+      height: 380px;
+    }
+  
+    .glass {
+      border-radius: 90px 90px 0 0;
+    }
+  
+    .petals div {
+      width: 35px;
+      height: 50px;
+      top: 70px;
+    }
+  
+    .petals div:nth-child(1) {
+      left: 45%;
+      box-shadow: 0 0 25px rgba(245, 148, 184, 1);
+    }
+  
+    .petals div:nth-child(2),
+    .petals div:nth-child(4),
+    .petals div:nth-child(6) {
+      left: 33%;
+      border-radius: 0 22px 0 22px;
+    }
+  
+    .petals div:nth-child(3),
+    .petals div:nth-child(5),
+    .petals div:nth-child(7) {
+      left: 57%;
+      border-radius: 22px 0 22px 0;
+    }
+  
+    @keyframes bloom2 {
+      50% { transform: rotate(-90deg); top: 180px; left: 70px; }
+      100% { transform: rotate(-60deg); top: 260px; left: 40px; background: #71122a; box-shadow: none; }
+    }
+  
+    .leaves div:nth-child(1) {
+      width: 1.8%;
+      height: 28%;
+      top: 43%;
+      left: 49%;
+    }
+  
+    .leaves div:nth-child(2),
+    .leaves div:nth-child(3) {
+      width: 9%;
+      height: 16%;
+      top: 53%;
+    }
+  
+    .leaves div:nth-child(2) { left: 36%; transform: rotate(-30deg); }
+    .leaves div:nth-child(3) { left: 54%; transform: rotate(30deg); }
+  
+    .leaves div:nth-child(4) {
+      width: 8%;
+      height: 3.5%;
+      top: 46%;
+      left: 43%;
+    }
+  
+    .thorns div:nth-child(odd),
+    .thorns div:nth-child(even) {
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left-width: 7px;
+      border-right-width: 7px;
+      left: 51%;
+    }
+  
+    .thorns div:nth-child(1) { top: 58%; }
+    .thorns div:nth-child(2) { top: 48%; }
+    .thorns div:nth-child(3) { top: 63%; }
+    .thorns div:nth-child(4) { top: 66%; }
+  
+    .shine {
+      left: 73%;
+      top: 45px;
+      width: 9px;
+      height: 70px;
+    }
+  
+    .shine::before {
+      top: 80px;
+      width: 9px;
+      height: 13px;
+    }
+  
+    .petal {
+      width: 7px;
+      height: 5px;
+    }
+  }
+  
